@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>SPX Volley — Come pagare</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
+
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body {
+    background: #0a0a0a;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    display:flex;
+    justify-content:center;
+    padding: 50px 20px 100px;
+  }
+  .col { display:flex; flex-direction:column; align-items:center; }
+  .page-title { text-align:center; max-width: 380px; margin-bottom: 24px; }
+  .page-title h1 { font-size: 1.05rem; font-weight:800; }
+  .page-title p { color:#999; margin-top:6px; font-size:0.78rem; }
+
+  .phone {
+    width: 340px;
+    aspect-ratio: 9/20;
+    border-radius: 34px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    border: 8px solid #111;
+    background: #0a0a0a;
+  }
+
+  .geo-lines { position:absolute; top:0; right:0; width:160px; height:160px; z-index:1; opacity:0.5; pointer-events:none; }
+
+  .content {
+    position:relative; z-index:2;
+    display:flex; flex-direction:column;
+    height:100%;
+    padding: 20px 18px 16px;
+  }
+
+  .topbar { display:flex; align-items:center; gap:10px; }
+  .back { color:#FFC72C; font-size:1.2rem; font-weight:900; }
+  .topbar .title { font-weight:800; font-size:0.72rem; letter-spacing:1px; color:#999; }
+
+  .headline { margin-top: 12px; font-size: 1.25rem; font-weight: 900; line-height: 1.08; }
+  .headline .accent { color: #FFC72C; }
+  .divider { width:40px; height:3px; background:#FFC72C; margin: 12px 0; border-radius:2px; }
+
+  .bank-box {
+    background:#141414; border:1px solid #232323; border-radius:12px; padding: 12px;
+  }
+  .bank-box .k { font-size:0.55rem; color:#FFC72C; font-weight:900; letter-spacing:0.5px; }
+  .bank-box .v { font-size:0.68rem; color:#eee; font-weight:700; margin-top:2px; margin-bottom:10px; }
+  .bank-box .v.iban { font-family:monospace; letter-spacing:0.5px; font-size:0.74rem; margin-bottom:0; user-select: all; -webkit-user-select: all; cursor: text; }
+  .iban-row { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+  .copy-btn {
+    background:#FFC72C; color:#0a0a0a; font-weight:900; font-size:0.55rem;
+    padding: 5px 10px; border-radius:8px; cursor:pointer; flex-shrink:0; letter-spacing:0.5px;
+    transition: opacity 0.15s;
+  }
+  .copy-btn:active { opacity:0.6; }
+
+  .causale-box {
+    margin-top:10px; background:#141414; border:1.5px solid #FFC72C; border-radius:12px; padding: 12px;
+  }
+  .causale-box .k { font-size:0.55rem; color:#FFC72C; font-weight:900; letter-spacing:0.5px; }
+  .causale-box .v { font-size:0.7rem; color:#fff; font-weight:800; margin-top:4px; margin-bottom:8px; }
+  .causale-example { background:#0a0a0a; border-radius:8px; padding:9px 10px; font-size:0.63rem; color:#ccc; font-style:italic; }
+
+  .why-box {
+    margin-top:10px; background:#2b2306; border:1px solid #4a3d0a; border-radius:12px; padding: 12px;
+    display:flex; gap:10px; align-items:flex-start;
+  }
+  .why-box .tri { color:#FFC72C; font-size:0.95rem; margin-top:1px; }
+  .why-box .txt { font-size:0.68rem; color:#e0d3a0; line-height:1.45; }
+  .why-box .txt b { color:#FFC72C; }
+
+  .foot { text-align:center; font-size:0.56rem; color:#666; padding-top:14px; margin-top:auto; }
+  .foot a { color:#FFC72C; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<div class="col">
+  <div class="page-title">
+    <h1>Sotto-slide — Come pagare</h1>
+    <p>Dati bancari completi + spiegazione del perché la causale è obbligatoria, non solo consigliata.</p>
+  </div>
+
+  <div class="phone">
+    <svg class="geo-lines" viewBox="0 0 160 160" fill="none">
+      <circle cx="170" cy="-10" r="60" stroke="#FFC72C" stroke-width="1"/>
+      <line x1="90" y1="0" x2="160" y2="70" stroke="#FFC72C" stroke-width="1"/>
+      <line x1="120" y1="0" x2="160" y2="40" stroke="#FFC72C" stroke-width="1"/>
+    </svg>
+
+    <div class="content">
+      <div class="topbar">
+        <div class="back">‹</div>
+        <div class="title">QUOTE · COME PAGARE</div>
+      </div>
+
+      <div class="headline">Dati per il <span class="accent">bonifico</span></div>
+      <div class="divider"></div>
+
+      <div class="bank-box">
+        <div class="k">INTESTATARIO</div>
+        <div class="v">Gruppo Sportivo San Pio X — Ass. Sportiva</div>
+        <div class="k">IBAN</div>
+        <div class="iban-row">
+          <div class="v iban" id="iban-text">IT79D0707213000000411616</div>
+          <div class="copy-btn" onclick="copyIban()" id="copy-btn">COPIA</div>
+        </div>
+      </div>
+
+      <div class="causale-box">
+        <div class="k">CAUSALE — OBBLIGATORIA</div>
+        <div class="v">Nome Cognome atleta — Squadra — Rata/Saldo</div>
+        <div class="causale-example">"Mario Rossi — Under 16 Maschile — Prima rata"</div>
+      </div>
+
+      <div class="why-box">
+        <div class="tri">⚠</div>
+        <div class="txt"><b>Perché è obbligatoria:</b> senza nome, cognome e squadra il bonifico arriva ma resta anonimo. Non riusciamo a risalire a chi ha pagato, e rischiamo di segnarti come "in attesa" anche se hai già versato.</div>
+      </div>
+
+      <div class="foot">Dubbi? <a href="#">spxvolley@gmail.com</a></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function copyIban() {
+  const text = document.getElementById('iban-text').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copy-btn');
+    const original = btn.innerText;
+    btn.innerText = 'COPIATO ✓';
+    setTimeout(() => { btn.innerText = original; }, 1500);
+  }).catch(() => {
+    // fallback: select the text so the user can copy manually
+    const range = document.createRange();
+    range.selectNode(document.getElementById('iban-text'));
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+  });
+}
+</script>
+
+</body>
+</html>

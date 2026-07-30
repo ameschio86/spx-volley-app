@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>SPX Volley — Quote</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
+
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body {
+    background: #0a0a0a;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    display:flex;
+    justify-content:center;
+    padding: 50px 20px 100px;
+  }
+  .col { display:flex; flex-direction:column; align-items:center; }
+  .page-title { text-align:center; max-width: 380px; margin-bottom: 24px; }
+  .page-title h1 { font-size: 1.05rem; font-weight:800; }
+  .page-title p { color:#999; margin-top:6px; font-size:0.78rem; }
+
+  .phone {
+    width: 340px;
+    aspect-ratio: 9/22;
+    border-radius: 34px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    border: 8px solid #111;
+    background: #0a0a0a;
+  }
+
+  .geo-lines { position:absolute; top:0; right:0; width:160px; height:160px; z-index:1; opacity:0.5; pointer-events:none; }
+
+  .content {
+    position:relative; z-index:2;
+    display:flex; flex-direction:column;
+    height:100%;
+    padding: 20px 18px 18px;
+  }
+
+  .topbar { display:flex; align-items:center; gap:10px; }
+  .back { color:#FFC72C; font-size:1.2rem; font-weight:900; }
+  .topbar .title { font-weight:800; font-size:0.72rem; letter-spacing:1px; color:#999; }
+
+  .headline { margin-top: 12px; font-size: 1.25rem; font-weight: 900; line-height: 1.08; }
+  .headline .accent { color: #FFC72C; }
+  .sub { font-size: 0.68rem; color: #bbb; margin-top: 4px; }
+  .divider { width:40px; height:3px; background:#FFC72C; margin: 12px 0; border-radius:2px; }
+
+  .section-label { font-size:0.62rem; font-weight:900; color:#FFC72C; letter-spacing:1px; margin: 12px 0 6px; }
+
+  .table {
+    background:#141414; border:1px solid #232323; border-radius:12px; overflow:hidden;
+  }
+  .trow { display:flex; justify-content:space-between; padding: 9px 12px; font-size:0.68rem; border-bottom:1px solid #202020; }
+  .trow:last-child { border-bottom:none; }
+  .trow .cat { color:#ddd; font-weight:600; }
+  .trow .val { color:#FFC72C; font-weight:900; }
+  .trow.free .val { color:#7fdc8a; }
+
+  .rate-split {
+    margin-top:8px; background:#141414; border:1px solid #232323; border-radius:10px; padding: 8px 12px;
+  }
+  .rate-row { display:flex; justify-content:space-between; font-size:0.62rem; padding: 4px 0; }
+  .rate-row .rc { color:#999; }
+  .rate-row .rv { color:#FFC72C; font-weight:800; }
+
+  .rate-note { font-size:0.56rem; color:#777; margin-top:6px; font-style:italic; }
+
+  .two-col { display:flex; gap:8px; margin-top: 8px; }
+  .mini-box { flex:1; background:#141414; border:1px solid #232323; border-radius:10px; padding:9px 10px; }
+  .mini-box .k { font-size:0.55rem; color:#999; font-weight:700; letter-spacing:0.5px; }
+  .mini-box .v { font-size:0.72rem; font-weight:900; color:#fff; margin-top:2px; }
+
+  .included-box {
+    margin-top:10px; background:#0f1f10; border:1px solid #1f3a20; border-radius:12px; padding: 10px 12px;
+  }
+  .included-box .item { display:flex; gap:7px; font-size:0.66rem; color:#cdeecf; margin-bottom:4px; }
+  .included-box .item:last-child { margin-bottom:0; }
+  .included-box .item::before { content:'✓'; color:#3ecf5c; font-weight:900; }
+
+  .bank-box {
+    margin-top:10px; background:#141414; border:1.5px solid #FFC72C; border-radius:12px; padding: 12px;
+  }
+  .bank-box .k { font-size:0.55rem; color:#FFC72C; font-weight:900; letter-spacing:0.5px; }
+  .bank-box .v { font-size:0.68rem; color:#eee; font-weight:700; margin-top:2px; margin-bottom:8px; word-break: break-all; }
+  .bank-box .iban { font-family:monospace; letter-spacing:0.5px; font-size:0.72rem; }
+  .bank-box .causale-example { margin-top:4px; background:#0a0a0a; border-radius:8px; padding:8px 10px; font-size:0.62rem; color:#ccc; font-style:italic; }
+
+  .pay-btn {
+    margin-top:8px;
+    background:transparent; color:#FFC72C;
+    border: 1.5px solid #FFC72C;
+    text-align:center;
+    font-weight:900; font-size:0.7rem;
+    padding: 11px;
+    border-radius: 30px;
+  }
+
+  .note-box {
+    margin-top:10px; background:#141414; border:1px dashed #444; border-radius:12px; padding: 10px 12px;
+    font-size:0.64rem; color:#aaa; line-height:1.4;
+  }
+  .note-box b { color:#FFC72C; }
+
+  .foot { text-align:center; font-size:0.56rem; color:#666; padding-top:12px; margin-top:auto; }
+  .foot a { color:#FFC72C; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<div class="col">
+  <div class="page-title">
+    <h1>Slide — Quote</h1>
+    <p>Tabella prezzi, scadenze rate, cosa è incluso, dati bonifico con causale d'esempio, nota sconto famiglia.</p>
+  </div>
+
+  <div class="phone">
+    <svg class="geo-lines" viewBox="0 0 160 160" fill="none">
+      <circle cx="170" cy="-10" r="60" stroke="#FFC72C" stroke-width="1"/>
+      <line x1="90" y1="0" x2="160" y2="70" stroke="#FFC72C" stroke-width="1"/>
+      <line x1="120" y1="0" x2="160" y2="40" stroke="#FFC72C" stroke-width="1"/>
+    </svg>
+
+    <div class="content">
+      <div class="topbar">
+        <div class="back">‹</div>
+        <div class="title">QUOTE</div>
+      </div>
+
+      <div class="headline">Quote <span class="accent">2026/27</span></div>
+      <div class="sub">Importo in base alla squadra di appartenenza</div>
+      <div class="divider"></div>
+
+      <div class="table">
+        <div class="trow"><div class="cat">S3 / Minivolley</div><div class="val">€ 400</div></div>
+        <div class="trow"><div class="cat">Amatoriali</div><div class="val">€ 470</div></div>
+        <div class="trow"><div class="cat">Squadre U12 M/F e superiori</div><div class="val">€ 550</div></div>
+      </div>
+
+      <div class="rate-split">
+        <div class="rate-row"><span class="rc">S3 / Minivolley</span><span class="rv">€220 + €180</span></div>
+        <div class="rate-row"><span class="rc">U12 M/F e superiori</span><span class="rv">€300 + €250</span></div>
+      </div>
+      <div class="rate-note">Amatoriali: pagamento gestito direttamente in palestra</div>
+
+      <div class="two-col">
+        <div class="mini-box"><div class="k">1ª RATA</div><div class="v">entro fine set. '26</div></div>
+        <div class="mini-box"><div class="k">SALDO</div><div class="v">entro gen. '27</div></div>
+      </div>
+
+      <div class="section-label">COSA È INCLUSO</div>
+      <div class="included-box">
+        <div class="item">Accesso palestra tutta la stagione (set–mag)</div>
+        <div class="item">Assicurazione FIPAV</div>
+      </div>
+
+      <div class="section-label">COME PAGARE</div>
+      <div class="pay-btn">Vedi dati per il bonifico ›</div>
+
+      <div class="note-box">
+        <b>Più figli/e in società?</b> Sono previste agevolazioni per i nuclei familiari con più atleti — contatta la segreteria per i dettagli.
+      </div>
+
+      <div class="foot">Dubbi? <a href="#">spxvolley@gmail.com</a></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

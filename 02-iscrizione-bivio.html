@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>SPX Volley — Iscrizione: bivio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
+
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body {
+    background: #0a0a0a;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    gap: 40px;
+    padding: 50px 20px 100px;
+  }
+  .col { display:flex; flex-direction:column; align-items:center; }
+  .page-title { text-align:center; max-width: 320px; margin-bottom: 24px; }
+  .page-title h1 { font-size: 1.05rem; font-weight:800; }
+  .page-title p { color:#999; margin-top:6px; font-size:0.78rem; }
+
+  .phone {
+    width: 340px;
+    aspect-ratio: 9/18.5;
+    border-radius: 34px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    border: 8px solid #111;
+    background: #0a0a0a;
+  }
+
+  .geo-lines { position:absolute; top:0; right:0; width:180px; height:180px; z-index:1; opacity:0.5; pointer-events:none; }
+
+  .content {
+    position:relative; z-index:2;
+    display:flex; flex-direction:column;
+    height:100%;
+    padding: 22px 20px 20px;
+  }
+
+  .topbar { display:flex; align-items:center; gap:10px; }
+  .back { color:#FFC72C; font-size:1.3rem; font-weight:900; }
+  .topbar .title { font-weight:800; font-size:0.85rem; letter-spacing:1px; }
+
+  .headline {
+    margin-top: 22px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+  }
+  .headline .accent { color: #FFC72C; }
+  .sub { font-size: 0.75rem; color: #bbb; margin-top: 6px; font-weight:500; }
+  .divider { width:50px; height:3px; background:#FFC72C; margin: 18px 0; border-radius:2px; }
+
+  .big-choice {
+    flex: 1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap: 16px;
+  }
+  .choice-btn {
+    background:#141414;
+    border:1.5px solid #FFC72C;
+    border-radius:18px;
+    padding: 22px 18px;
+    display:flex;
+    align-items:center;
+    gap: 16px;
+  }
+  .choice-btn .badge {
+    width:46px; height:46px; border-radius:12px;
+    background:#FFC72C; color:#0a0a0a;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.3rem; flex-shrink:0; font-weight:900;
+  }
+  .choice-btn .label { font-weight:900; font-size:0.95rem; }
+  .choice-btn .desc { font-size:0.68rem; color:#999; margin-top:3px; }
+  .choice-btn .arrow { margin-left:auto; color:#FFC72C; font-size:1.3rem; font-weight:900; }
+
+  .foot { text-align:center; font-size:0.6rem; color:#666; padding-top:14px; }
+  .foot a { color:#FFC72C; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<div class="col">
+  <div class="page-title">
+    <h1>Iscrizione — primo bivio</h1>
+    <p>Solo 2 bottoni, stessa estetica nero/oro senza colori extra. Da qui si diramano le due sotto-slide.</p>
+  </div>
+
+  <div class="phone">
+    <svg class="geo-lines" viewBox="0 0 180 180" fill="none">
+      <circle cx="190" cy="-10" r="70" stroke="#FFC72C" stroke-width="1"/>
+      <line x1="100" y1="0" x2="180" y2="80" stroke="#FFC72C" stroke-width="1"/>
+      <line x1="130" y1="0" x2="180" y2="50" stroke="#FFC72C" stroke-width="1"/>
+    </svg>
+
+    <div class="content">
+      <div class="topbar">
+        <div class="back">‹</div>
+        <div class="title">ISCRIZIONE</div>
+      </div>
+
+      <div class="headline">Chi <span class="accent">sei</span>?</div>
+      <div class="sub">Scegli la tua situazione</div>
+      <div class="divider"></div>
+
+      <div class="big-choice">
+        <div class="choice-btn">
+          <div class="badge">🆕</div>
+          <div>
+            <div class="label">Prima volta SPX</div>
+            <div class="desc">Nuovo atleta, mai iscritto prima</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>
+
+        <div class="choice-btn">
+          <div class="badge">🏐</div>
+          <div>
+            <div class="label">Sei già atleta SPX</div>
+            <div class="desc">Sei già tesserato con noi</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>
+      </div>
+
+      <div class="foot">Dubbi? <a href="#">spxvolley@gmail.com</a></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

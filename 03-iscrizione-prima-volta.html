@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>SPX Volley — Prima volta SPX</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
+
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body {
+    background: #0a0a0a;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    display:flex;
+    justify-content:center;
+    padding: 50px 20px 100px;
+  }
+  .col { display:flex; flex-direction:column; align-items:center; }
+  .page-title { text-align:center; max-width: 360px; margin-bottom: 24px; }
+  .page-title h1 { font-size: 1.05rem; font-weight:800; }
+  .page-title p { color:#999; margin-top:6px; font-size:0.78rem; }
+
+  .phone {
+    width: 340px;
+    aspect-ratio: 9/18.5;
+    border-radius: 34px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    border: 8px solid #111;
+    background: #0a0a0a;
+  }
+
+  .geo-lines { position:absolute; top:0; right:0; width:180px; height:180px; z-index:1; opacity:0.5; pointer-events:none; }
+
+  .content {
+    position:relative; z-index:2;
+    display:flex; flex-direction:column;
+    height:100%;
+    padding: 22px 20px 18px;
+    overflow:hidden;
+  }
+
+  .topbar { display:flex; align-items:center; gap:10px; }
+  .back { color:#FFC72C; font-size:1.3rem; font-weight:900; }
+  .topbar .title { font-weight:800; font-size:0.78rem; letter-spacing:1px; color:#999; }
+
+  .headline {
+    margin-top: 14px;
+    font-size: 1.35rem;
+    font-weight: 900;
+    line-height: 1.08;
+  }
+  .headline .accent { color: #FFC72C; }
+  .sub { font-size: 0.7rem; color: #bbb; margin-top: 5px; font-weight:500; }
+  .divider { width:44px; height:3px; background:#FFC72C; margin: 14px 0; border-radius:2px; }
+
+  .step {
+    display:flex;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .step .num {
+    width: 26px; height:26px; border-radius:50%;
+    background:#FFC72C; color:#0a0a0a;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:900; font-size:0.72rem;
+    flex-shrink:0;
+  }
+  .step .txt .t { font-weight:800; font-size:0.78rem; }
+  .step .txt .d { font-size: 0.66rem; color:#999; margin-top:2px; line-height:1.35; }
+
+  .fields-box {
+    background:#141414;
+    border: 1px solid #232323;
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin: 4px 0 12px 38px;
+  }
+  .fields-box .f { font-size:0.66rem; color:#ddd; padding: 5px 0; border-bottom: 1px solid #202020; }
+  .fields-box .f:last-child { border-bottom:none; }
+  .fields-box .f b { color:#FFC72C; }
+
+  .cta-btn {
+    margin-top: auto;
+    background:#FFC72C; color:#0a0a0a;
+    text-align:center;
+    font-weight:900; font-size:0.78rem;
+    letter-spacing:0.5px;
+    padding: 13px;
+    border-radius: 30px;
+  }
+  .foot { text-align:center; font-size:0.58rem; color:#666; padding-top:10px; }
+  .foot a { color:#FFC72C; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<div class="col">
+  <div class="page-title">
+    <h1>Sotto-slide — Prima volta SPX</h1>
+    <p>Stesso link di sempre. Il sistema riconosce dal codice fiscale che sei nuovo e ti mostra tutti i campi vuoti da compilare.</p>
+  </div>
+
+  <div class="phone">
+    <svg class="geo-lines" viewBox="0 0 180 180" fill="none">
+      <circle cx="190" cy="-10" r="70" stroke="#FFC72C" stroke-width="1"/>
+      <line x1="100" y1="0" x2="180" y2="80" stroke="#FFC72C" stroke-width="1"/>
+      <line x1="130" y1="0" x2="180" y2="50" stroke="#FFC72C" stroke-width="1"/>
+    </svg>
+
+    <div class="content">
+      <div class="topbar">
+        <div class="back">‹</div>
+        <div class="title">ISCRIZIONE · PRIMA VOLTA</div>
+      </div>
+
+      <div class="headline">Come <span class="accent">funziona</span></div>
+      <div class="sub">3 passaggi</div>
+      <div class="divider"></div>
+
+      <div class="step">
+        <div class="num">1</div>
+        <div class="txt">
+          <div class="t">Inserisci il codice fiscale dell'atleta</div>
+          <div class="d">Il sistema non ti trova nel database → sei riconosciuto come nuovo atleta</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num">2</div>
+        <div class="txt">
+          <div class="t">Compila i dati richiesti</div>
+          <div class="d">Vedrai una scheda vuota, tutta da riempire</div>
+        </div>
+      </div>
+      <div class="fields-box">
+        <div class="f"><b>•</b> Dati anagrafici dell'atleta</div>
+        <div class="f"><b>•</b> Dati del genitore/tutore (se minorenne)</div>
+        <div class="f"><b>•</b> Foto della visita medica + data di scadenza</div>
+        <div class="f"><b>•</b> Squadra 2026/27</div>
+      </div>
+
+      <div class="step">
+        <div class="num">3</div>
+        <div class="txt">
+          <div class="t">Salva</div>
+          <div class="d">Ecco, il gioco è fatto</div>
+        </div>
+      </div>
+
+      <div class="cta-btn">ISCRIVITI</div>
+      <div class="foot">Dubbi? <a href="#">spxvolley@gmail.com</a></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
