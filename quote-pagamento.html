@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Come pagare — Quote SPX Volley</title>
+<meta name="description" content="Dati per il bonifico: IBAN e causale obbligatoria SPX Volley.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<svg class="geo-lines" viewBox="0 0 160 160" fill="none">
+  <circle cx="170" cy="-10" r="60" stroke="#FFC72C" stroke-width="1"/>
+  <line x1="90" y1="0" x2="160" y2="70" stroke="#FFC72C" stroke-width="1"/>
+  <line x1="120" y1="0" x2="160" y2="40" stroke="#FFC72C" stroke-width="1"/>
+</svg>
+
+<div class="page">
+  <div class="topbar">
+    <a class="back" href="quote.html">‹</a>
+    <div class="title">QUOTE · COME PAGARE</div>
+  </div>
+
+  <div class="headline">Dati per il <span class="accent">bonifico</span></div>
+  <div class="divider"></div>
+
+  <div class="bank-box">
+    <div class="k">INTESTATARIO</div>
+    <div class="v">Gruppo Sportivo San Pio X — Ass. Sportiva</div>
+    <div class="k">IBAN</div>
+    <div class="iban-row">
+      <div class="v iban" id="iban-text">IT79D0707213000000411616</div>
+      <button class="copy-btn" id="copy-btn" type="button" onclick="copyText('iban-text','copy-btn')">COPIA</button>
+    </div>
+  </div>
+
+  <div class="causale-box">
+    <div class="k">CAUSALE — OBBLIGATORIA</div>
+    <div class="v">Nome Cognome atleta — Squadra — Rata/Saldo</div>
+    <div class="causale-example">"Mario Rossi — Under 16 Maschile — Prima rata"</div>
+  </div>
+
+  <div class="why-box">
+    <div class="tri">⚠</div>
+    <div class="txt"><b>Perché è obbligatoria:</b> senza nome, cognome e squadra il bonifico arriva ma resta anonimo. Non riusciamo a risalire a chi ha pagato, e rischiamo di segnarti come "in attesa" anche se hai già versato.</div>
+  </div>
+
+  <div class="foot">Dubbi? <a href="mailto:spxvolley@gmail.com">spxvolley@gmail.com</a></div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

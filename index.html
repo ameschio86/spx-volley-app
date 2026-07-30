@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SPX Volley — App Genitori</title>
+<meta name="description" content="Iscrizione, quote, materiale, moduli e FAQ per le famiglie di SPX Volley Ferrara.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32">
+<link rel="icon" href="assets/icons/favicon-16.png" sizes="16x16">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SPX Volley">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<svg class="geo-lines" viewBox="0 0 220 220" fill="none">
+  <circle cx="230" cy="-10" r="90" stroke="#FFC72C" stroke-width="1"/>
+  <line x1="120" y1="0" x2="220" y2="100" stroke="#FFC72C" stroke-width="1"/>
+  <line x1="150" y1="0" x2="220" y2="70" stroke="#FFC72C" stroke-width="1"/>
+  <line x1="180" y1="0" x2="220" y2="40" stroke="#FFC72C" stroke-width="1"/>
+</svg>
+
+<div class="page">
+  <div class="header">
+    <div class="est">DAL 1972</div>
+    <img class="shield" src="logo_nuovo_Giallo.png" alt="Stemma SPX Volley">
+    <div class="brand">SPX VOLLEY</div>
+  </div>
+
+  <div class="headline center">Area <span class="accent">Famiglie</span></div>
+  <div class="sub center">Tutto quello che ti serve, in un tocco</div>
+  <div class="divider center"></div>
+
+  <nav class="icons-list">
+    <a class="icon-row" href="iscrizione.html">
+      <div class="badge">📝</div>
+      <div>
+        <div class="label">Iscrizione</div>
+        <div class="desc">Nuovo atleta o aggiorna la visita medica</div>
+      </div>
+      <div class="arrow">›</div>
+    </a>
+    <a class="icon-row" href="quote.html">
+      <div class="badge">💳</div>
+      <div>
+        <div class="label">Quote</div>
+        <div class="desc">Importi, scadenze, pagamenti</div>
+      </div>
+      <div class="arrow">›</div>
+    </a>
+    <a class="icon-row" href="materiale.html">
+      <div class="badge">👕</div>
+      <div>
+        <div class="label">Materiale</div>
+        <div class="desc">Ordina kit e abbigliamento</div>
+      </div>
+      <div class="arrow">›</div>
+    </a>
+    <a class="icon-row" href="moduli.html">
+      <div class="badge">📄</div>
+      <div>
+        <div class="label">Moduli</div>
+        <div class="desc">Documenti da scaricare</div>
+      </div>
+      <div class="arrow">›</div>
+    </a>
+    <a class="icon-row" href="faq.html">
+      <div class="badge">❓</div>
+      <div>
+        <div class="label">FAQ</div>
+        <div class="desc">Domande frequenti</div>
+      </div>
+      <div class="arrow">›</div>
+    </a>
+  </nav>
+
+  <div class="alert-box">
+    <div class="tri">⚠️</div>
+    <div class="txt"><b>Promemoria automatico:</b> se la visita medica di tuo figlio/a è in scadenza, ricevi una mail. Basta fare la visita e aggiornare qui i dati in <a href="iscrizione.html">Iscrizione</a>.</div>
+  </div>
+
+  <div class="foot">SPX VOLLEY FERRARA · dal <b>1972</b><br>Dubbi? <a href="mailto:spxvolley@gmail.com">spxvolley@gmail.com</a></div>
+</div>
+
+<div class="install-banner" id="install-banner">
+  <div class="txt"><b>Installa l'app</b>Aggiungila alla schermata Home per averla sempre a portata di mano.</div>
+  <button class="dismiss" id="install-dismiss" type="button">No grazie</button>
+  <button id="install-btn" type="button">Installa</button>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
