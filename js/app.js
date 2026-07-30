@@ -14,17 +14,22 @@ function copyText(sourceId, btnId) {
 
   if (!btn.dataset.originalLabel) btn.dataset.originalLabel = btn.innerText;
 
-  navigator.clipboard?.writeText(text).then(() => {
-    btn.innerText = 'COPIATO ✓';
-    restore();
-  }).catch(() => {
+  const fallbackSelect = () => {
     const range = document.createRange();
     range.selectNode(el);
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(range);
     btn.innerText = 'SELEZIONATO';
     restore();
-  });
+  };
+
+  const writeAttempt = navigator.clipboard?.writeText(text) ?? Promise.reject();
+  const timeout = new Promise((_, reject) => setTimeout(reject, 1200));
+
+  Promise.race([writeAttempt, timeout]).then(() => {
+    btn.innerText = 'COPIATO ✓';
+    restore();
+  }).catch(fallbackSelect);
 }
 
 // Banner "Aggiungi a schermata Home" (Android/Chrome espone beforeinstallprompt; iOS/Safari no)
