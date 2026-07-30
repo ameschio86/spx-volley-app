@@ -1,3 +1,12 @@
+// Splash screen all'apertura (presente solo in index.html, avvio della PWA)
+const splash = document.getElementById('splash');
+if (splash) {
+  setTimeout(() => {
+    splash.classList.add('hide');
+    setTimeout(() => splash.remove(), 400);
+  }, 2200);
+}
+
 // Registrazione service worker (offline-friendly per le pagine statiche)
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

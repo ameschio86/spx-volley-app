@@ -1,4 +1,4 @@
-const CACHE_NAME = 'spx-app-v1';
+const CACHE_NAME = 'spx-app-v2';
 
 const APP_SHELL = [
   './',
