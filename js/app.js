@@ -41,6 +41,13 @@ function copyText(sourceId, btnId) {
   }).catch(fallbackSelect);
 }
 
+// Samsung Internet spesso fallisce l'installazione PWA (bug noto del browser,
+// non del sito) -- suggerisce di riaprire con Chrome, dove funziona.
+if (/SamsungBrowser/i.test(navigator.userAgent)) {
+  const note = document.getElementById('samsung-note');
+  if (note) note.style.display = 'flex';
+}
+
 // Banner "Aggiungi a schermata Home" (Android/Chrome espone beforeinstallprompt; iOS/Safari no)
 let deferredInstallPrompt = null;
 
