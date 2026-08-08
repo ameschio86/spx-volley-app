@@ -58,13 +58,19 @@ def extract_from_dark_grid(src_path, anchors, dilate_iter=35):
         save_transparent(crop, os.path.join(OUT_DIR, f'{slug}.png'))
 
 
-def extract_from_white_bg(src_path, slug):
+def extract_from_white_bg(src_path, slug, dark_to_white=False, dark_thresh=120):
+    """dark_to_white: some logos were designed for print on white and use
+    black text/outlines that vanish against the dark ticker background --
+    recolor those to white. Uses max-channel (not mean) so it never touches
+    saturated brand colors (a vivid green/blue still has a high channel even
+    if it reads 'dark' on average)."""
     im = Image.open(src_path).convert('RGB')
-    arr = np.array(im)
-    mask = arr.mean(axis=2) < 245  # content = not white
-    rgba = Image.fromarray(arr).convert('RGBA')
-    rgba_arr = np.array(rgba)
-    rgba_arr[:, :, 3] = np.where(mask, 255, 0)
+    arr = np.array(im).astype(int)
+    mask = arr.mean(axis=2) < 245  # content = not white (this is the alpha mask)
+    if dark_to_white:
+        near_black = arr.max(axis=2) < dark_thresh
+        arr[near_black] = [255, 255, 255]
+    rgba_arr = np.dstack([arr, np.where(mask, 255, 0)]).astype('uint8')
     crop = Image.fromarray(rgba_arr)
     save_transparent(crop, os.path.join(OUT_DIR, f'{slug}.png'))
 
@@ -82,6 +88,6 @@ if __name__ == '__main__':
             'fassa-village': (705, 1503),
         },
     )
-    extract_from_white_bg(os.path.join(INPUT_DIR, 'ARREDO UNO.png'), 'arredo-uno')
-    extract_from_white_bg(os.path.join(INPUT_DIR, 'Polycycle.png'), 'polycykle')
+    extract_from_white_bg(os.path.join(INPUT_DIR, 'ARREDO UNO.png'), 'arredo-uno', dark_to_white=True)
+    extract_from_white_bg(os.path.join(INPUT_DIR, 'Polycycle.png'), 'polycykle', dark_to_white=True)
     extract_from_white_bg(os.path.join(INPUT_DIR, 'Yakata Sport.png'), 'yakata-sport')
