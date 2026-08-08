@@ -276,6 +276,31 @@ a { color: inherit; text-decoration: none; }
 }
 .install-banner .dismiss { background: transparent; color: #999; padding: 8px 6px; font-weight: 700; }
 
+/* pagina dettaglio articolo (prodotto.html) */
+.product-hero {
+  width: 100%; aspect-ratio: 1/1; border-radius: 16px; overflow: hidden;
+  background: #fff; margin-bottom: 16px; border: 1px solid #232323;
+}
+.product-hero img { width: 100%; height: 100%; display: block; object-fit: contain; }
+.product-price-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+.product-price { color: #FFC72C; font-weight: 900; font-size: 1.4rem; }
+.product-brand { font-size: 0.68rem; color: #888; }
+.product-desc { font-size: 0.8rem; color: #ccc; line-height: 1.55; margin: 6px 0 16px; }
+.product-material { font-size: 0.72rem; color: #999; font-style: italic; margin-bottom: 16px; }
+
+.size-table { background: #141414; border: 1px solid #232323; border-radius: 12px; overflow: hidden; margin-bottom: 14px; }
+.size-row { display: flex; padding: 9px 14px; font-size: 0.72rem; border-bottom: 1px solid #202020; }
+.size-row:last-child { border-bottom: none; }
+.size-row.head { color: #FFC72C; font-weight: 900; background: #1a1a1a; }
+.size-row span { flex: 1; text-align: center; }
+.size-row span:first-child { text-align: left; font-weight: 700; color: #fff; }
+.size-row.head span:first-child { color: #FFC72C; }
+.size-note { font-size: 0.62rem; color: #777; font-style: italic; margin: -6px 0 14px; }
+
+/* riga cliccabile nelle liste articoli */
+.trow.link { cursor: pointer; }
+.trow .row-arrow { color: #FFC72C; font-weight: 900; flex-shrink: 0; margin-left: 2px; }
+
 /* splash iniziale, solo sulla home (start_url della PWA) */
 .splash {
   position: fixed;

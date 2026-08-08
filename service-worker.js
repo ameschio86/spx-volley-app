@@ -1,4 +1,4 @@
-const CACHE_NAME = 'spx-app-v3';
+const CACHE_NAME = 'spx-app-v4';
 
 const APP_SHELL = [
   './',
@@ -10,10 +10,12 @@ const APP_SHELL = [
   'quote-pagamento.html',
   'materiale.html',
   'materiale-merch.html',
+  'prodotto.html',
   'moduli.html',
   'faq.html',
   'css/style.css',
   'js/app.js',
+  'js/products.js',
   'manifest.json',
   'logo_nuovo_Giallo.png',
   'assets/icons/icon-192.png',
@@ -55,7 +57,16 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // asset statici (css/js/immagini): cache-first, e li mette in cache al primo utilizzo
+  // (cosi' anche le foto prodotto non elencate in APP_SHELL finiscono offline dopo la prima visita)
   event.respondWith(
-    caches.match(event.request).then((cached) => cached || fetch(event.request))
+    caches.match(event.request).then((cached) => {
+      if (cached) return cached;
+      return fetch(event.request).then((response) => {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+        return response;
+      });
+    })
   );
 });

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Articolo — SPX Volley</title>
+<meta name="description" content="Dettaglio articolo merchandising SPX Volley.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<svg class="geo-lines" viewBox="0 0 160 160" fill="none">
+  <circle cx="170" cy="-10" r="60" stroke="#FFC72C" stroke-width="1"/>
+  <line x1="90" y1="0" x2="160" y2="70" stroke="#FFC72C" stroke-width="1"/>
+  <line x1="120" y1="0" x2="160" y2="40" stroke="#FFC72C" stroke-width="1"/>
+</svg>
+
+<div class="page">
+  <div class="topbar">
+    <a class="back" id="back-link" href="materiale-merch.html">‹</a>
+    <div class="title" id="p-category">ARTICOLO</div>
+  </div>
+
+  <div class="product-hero">
+    <img id="p-hero-img" src="" alt="">
+  </div>
+
+  <div class="headline" id="p-title">—</div>
+
+  <div class="product-price-row">
+    <div class="product-price" id="p-price"></div>
+    <div class="product-brand" id="p-brand"></div>
+  </div>
+
+  <div class="product-desc" id="p-desc"></div>
+  <div class="product-material" id="p-material"></div>
+
+  <div id="p-sizes"></div>
+
+  <div class="foot">Dubbi? <a href="mailto:spxvolley@gmail.com">spxvolley@gmail.com</a></div>
+</div>
+
+<script src="js/products.js"></script>
+<script>
+(function () {
+  const params = new URLSearchParams(location.search);
+  const id = params.get('id');
+  const from = params.get('from') || 'materiale-merch.html';
+  const p = PRODUCTS[id];
+
+  document.getElementById('back-link').href = from;
+
+  if (!p) {
+    document.getElementById('p-title').textContent = 'Articolo non trovato';
+    document.querySelector('.product-hero').style.display = 'none';
+    document.getElementById('p-sizes').innerHTML = '';
+  } else {
+    document.title = p.name + ' — SPX Volley';
+    document.getElementById('p-category').textContent = (p.category || 'ARTICOLO').toUpperCase();
+    document.getElementById('p-title').innerHTML = p.name.replace(/^(\S+)/, '<span class="accent">$1</span>');
+
+    const img = document.getElementById('p-hero-img');
+    img.src = p.image;
+    img.alt = p.name;
+    img.onerror = function () { document.querySelector('.product-hero').style.display = 'none'; };
+
+    document.getElementById('p-price').textContent = p.price || '';
+    document.getElementById('p-brand').textContent = p.brand ? ('Brand: ' + p.brand) : '';
+    document.getElementById('p-desc').textContent = p.description || '';
+    document.getElementById('p-material').textContent = p.material || '';
+
+    const sizesEl = document.getElementById('p-sizes');
+    if (p.sizeTables && p.sizeTables.length) {
+      p.sizeTables.forEach((t) => {
+        const label = document.createElement('div');
+        label.className = 'section-label';
+        label.textContent = t.title;
+        sizesEl.appendChild(label);
+
+        const table = document.createElement('div');
+        table.className = 'size-table';
+
+        const head = document.createElement('div');
+        head.className = 'size-row head';
+        head.innerHTML = `<span>Taglia</span><span>${t.colA} (cm)</span><span>${t.colB} (cm)</span>`;
+        table.appendChild(head);
+
+        t.rows.forEach((r) => {
+          const row = document.createElement('div');
+          row.className = 'size-row';
+          row.innerHTML = `<span>${r[0]}</span><span>${r[1]}</span><span>${r[2]}</span>`;
+          table.appendChild(row);
+        });
+
+        sizesEl.appendChild(table);
+      });
+      if (p.sizeNote) {
+        const note = document.createElement('div');
+        note.className = 'size-note';
+        note.textContent = p.sizeNote;
+        sizesEl.appendChild(note);
+      }
+    } else if (p.sizeNote) {
+      const note = document.createElement('div');
+      note.className = 'note-box';
+      note.textContent = p.sizeNote;
+      sizesEl.appendChild(note);
+    }
+  }
+})();
+</script>
+<script src="js/app.js"></script>
+</body>
+</html>
