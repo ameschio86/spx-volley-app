@@ -52,7 +52,7 @@ Contatti/segnalazioni non è una voce a sé — vive dentro la FAQ e come riga "
 
 **Link diretto (bottone "ISCRIVITI", URL mai visibile a video)**:
 ```
-https://www.tmo-055.cloud/Cloud/2231_i2100lsrakk98i77p5suedgdu2.php?XmKey02=100
+http://teamorg.it/2231
 ```
 
 **Nessuna data di chiusura iscrizioni** — restano aperte tutta la stagione (apertura 3 agosto 2026, poi confermata/festeggiata sui social come "Si riparte!").
