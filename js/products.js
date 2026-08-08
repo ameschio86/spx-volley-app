@@ -94,6 +94,19 @@ const PRODUCTS = {
       { title: 'Taglie', colA: 'Altezza', colB: 'Larghezza', rows: [['XS',44,35],['S',46,38],['M',48,40],['L',50,43],['XL',52,45],['XXL',54,48]] },
     ],
   },
+  'pantaloncini-allenamento': {
+    name: 'Pantaloncini Allenamento',
+    category: 'Pantaloncini',
+    brand: 'B&C',
+    price: '€ 15',
+    material: '100% poliestere',
+    description: 'Stampa scritta SPX.',
+    thumb: 'assets/merch/pantaloncini-allenamento.jpg',
+    image: 'assets/merch/large/pantaloncini-allenamento.jpg',
+    sizeTables: [
+      { title: 'Taglie', colA: 'Altezza', colB: 'Larghezza', rows: [['XS',44,35],['S',46,38],['M',48,40],['L',50,43],['XL',52,45],['XXL',54,48]] },
+    ],
+  },
   'borsone-adrenalina': {
     name: 'Borsone grande Adrenalina',
     category: 'Borse e Zaini',
