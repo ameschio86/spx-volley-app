@@ -32,7 +32,7 @@ SOURCES = {
     'berretto-visiera-piatta': ('catalog', 'p13_img1_1332x1060.png'),
     'cuscino-gradinate': ('catalog', 'p13_img3_724x543.png'),
     'scaldacollo-pile': ('catalog', 'p14_img2_724x543.png'),
-    'divisa-gara': ('input', 'divisa.jpeg'),
+    'divisa-gara': ('input', 'Divisa.jpg'),
     'pantaloncini-allenamento': ('input', 'Pantaloncini corti allenamento..png'),
 }
 
