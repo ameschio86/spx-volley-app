@@ -15,7 +15,7 @@ body {
   min-height: 100vh;
   max-width: 480px;
   margin: 0 auto;
-  padding: 20px 20px 40px;
+  padding: 20px 20px 90px;
   position: relative;
   overflow-x: hidden;
 }
@@ -263,7 +263,7 @@ a { color: inherit; text-decoration: none; }
 
 .install-banner {
   display: none;
-  position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 20;
+  position: fixed; left: 16px; right: 16px; bottom: 66px; z-index: 20;
   max-width: 448px; margin: 0 auto;
   background: #141414; border: 1.5px solid #FFC72C; border-radius: 16px;
   padding: 14px 16px; align-items: center; gap: 12px;
@@ -326,4 +326,37 @@ a { color: inherit; text-decoration: none; }
   35% { transform: scale(1); }
   50% { transform: scale(1.08); }
   65% { transform: scale(1); }
+}
+
+/* striscia sponsor, fissa in fondo, presente su tutte le pagine */
+.sponsor-ticker {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 15;
+  background: #0d0d0f;
+  border-top: 1px solid #232323;
+  padding: 9px 0;
+  overflow: hidden;
+}
+.sponsor-ticker .track {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  width: max-content;
+  animation: sponsor-scroll 34s linear infinite;
+}
+.sponsor-ticker img {
+  height: 22px;
+  width: auto;
+  flex-shrink: 0;
+  display: block;
+}
+@keyframes sponsor-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sponsor-ticker .track { animation: none; overflow-x: auto; }
 }
