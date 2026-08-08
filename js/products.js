@@ -65,9 +65,8 @@ const PRODUCTS = {
     thumb: 'assets/merch/giacca-softshell.jpg',
     image: 'assets/merch/large/giacca-softshell.jpg',
     sizeTables: [
-      { title: 'Taglie', colA: 'Altezza', colB: 'Larghezza', rows: [['S',66,52],['M',69,55],['L',72,58],['XL',75,61],['XXL','18*',64]] },
+      { title: 'Taglie', colA: 'Altezza', colB: 'Larghezza', rows: [['S',66,52],['M',69,55],['L',72,58],['XL',75,61],['XXL',78,64]] },
     ],
-    sizeNote: '* così riportato nel catalogo originale — probabile refuso da verificare con la società prima dell\'acquisto in taglia XXL.',
   },
   'pantaloni-lunghi': {
     name: 'Pantaloni Lunghi Felpati',
@@ -180,7 +179,7 @@ const PRODUCTS = {
     name: 'Divisa gara in sublimatico',
     category: 'Divisa Gara',
     price: '€ 35',
-    description: 'Divisa gara ufficiale SPX Volley (maglia + pantaloncini), personalizzata con nome e numero del giocatore, sponsor di squadra, interamente stampata in sublimatico.',
+    description: 'Divisa gara ufficiale SPX Volley (maglia + pantaloncini), personalizzata con nome e numero del giocatore, sponsor di squadra, interamente stampata in sublimatico. Foto a titolo di esempio: nome, numero e sponsor variano in base a squadra e giocatore.',
     thumb: 'assets/merch/divisa-gara.jpg',
     image: 'assets/merch/large/divisa-gara.jpg',
     sizeNote: 'Taglie disponibili in fase d\'ordine nello store',
