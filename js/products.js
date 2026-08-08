@@ -32,7 +32,7 @@ const PRODUCTS = {
     name: 'Felpa Nera',
     category: 'Felpe',
     brand: 'Russell',
-    price: '€ 45 (uomo) / € 25 (bimbo)',
+    price: '€ 45 / € 25 (bimbo)',
     material: '80% cotone, 20% poliestere',
     description: 'Felpa a tre strati con cappuccio e cordoncino piatto, maniche set-in, nastro di rinforzo al collo, felpata internamente, struttura con cuciture laterali. Nelle taglie Uomo il logo è cucito, con cucitura scritta sul cappuccio. Nelle taglie Bimbo il logo è stampato, senza stampa sul cappuccio.',
     thumb: 'assets/merch/felpa-nera.jpg',
