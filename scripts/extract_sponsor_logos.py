@@ -29,14 +29,16 @@ def save_transparent(crop_rgba, out_path):
     print(f'{os.path.basename(out_path):32s} {crop_rgba.width}x{crop_rgba.height}')
 
 
-def extract_from_dark_grid(src_path, anchors, dilate_iter=35):
+def extract_from_dark_grid(src_path, anchors, dilate_iter=35, mask_thresh=20):
     """anchors: {slug: (x_center, y_center)} approximate position of each logo
     in the source image -- each detected blob is matched to its nearest anchor,
     which is far more robust than guessing a reading-order sort on an
-    irregular grid."""
+    irregular grid. Bump mask_thresh if the source has a faint decorative
+    background pattern (not pure black) that would otherwise register as
+    its own tiny stray blobs."""
     im = Image.open(src_path).convert('RGB')
     arr = np.array(im)
-    mask = arr.mean(axis=2) > 20
+    mask = arr.mean(axis=2) > mask_thresh
     dilated = ndimage.binary_dilation(mask, iterations=dilate_iter)
     labeled, n = ndimage.label(dilated)
     objs = ndimage.find_objects(labeled)
@@ -88,6 +90,12 @@ if __name__ == '__main__':
             'fassa-village': (705, 1503),
         },
     )
-    extract_from_white_bg(os.path.join(INPUT_DIR, 'ARREDO UNO.png'), 'arredo-uno', dark_to_white=True)
-    extract_from_white_bg(os.path.join(INPUT_DIR, 'Polycycle.png'), 'polycykle', dark_to_white=True)
+    extract_from_dark_grid(
+        os.path.join(INPUT_DIR, 'sponsor fronte.png'),
+        {
+            'arredo-uno': (878, 424),
+            'polycykle': (902, 1240),
+        },
+        mask_thresh=40,
+    )
     extract_from_white_bg(os.path.join(INPUT_DIR, 'Yakata Sport.png'), 'yakata-sport')
