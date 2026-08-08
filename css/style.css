@@ -175,10 +175,11 @@ a { color: inherit; text-decoration: none; }
 
 /* tabella prezzi */
 .table { background: #141414; border: 1px solid #232323; border-radius: 12px; overflow: hidden; }
-.trow { display: flex; justify-content: space-between; padding: 12px 14px; font-size: 0.78rem; border-bottom: 1px solid #202020; }
+.trow { display: flex; align-items: center; gap: 12px; padding: 10px 14px; font-size: 0.78rem; border-bottom: 1px solid #202020; }
 .trow:last-child { border-bottom: none; }
-.trow .cat { color: #ddd; font-weight: 600; }
-.trow .val { color: #FFC72C; font-weight: 900; }
+.trow .thumb { width: 38px; height: 38px; border-radius: 8px; object-fit: cover; background: #fff; flex-shrink: 0; }
+.trow .cat { color: #ddd; font-weight: 600; flex: 1; }
+.trow .val { color: #FFC72C; font-weight: 900; flex-shrink: 0; }
 
 .rate-split { margin-top: 10px; background: #141414; border: 1px solid #232323; border-radius: 10px; padding: 10px 14px; }
 .rate-row { display: flex; justify-content: space-between; font-size: 0.72rem; padding: 5px 0; }
