@@ -7,10 +7,24 @@ if (splash) {
   }, 2200);
 }
 
-// Registrazione service worker (offline-friendly per le pagine statiche)
+// Registrazione service worker (offline-friendly per le pagine statiche) con
+// aggiornamento automatico: quando una nuova versione prende il controllo,
+// la pagina si ricarica da sola una volta sola, senza che l'utente debba
+// chiudere e riaprire l'app manualmente.
 if ('serviceWorker' in navigator) {
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (refreshing) return;
+    refreshing = true;
+    window.location.reload();
+  });
+
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js').catch(() => {});
+    navigator.serviceWorker.register('service-worker.js').then((reg) => {
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') reg.update();
+      });
+    }).catch(() => {});
   });
 }
 

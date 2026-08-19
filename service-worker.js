@@ -1,4 +1,4 @@
-const CACHE_NAME = 'spx-app-v20';
+const CACHE_NAME = 'spx-app-v21';
 
 const APP_SHELL = [
   './',
@@ -12,6 +12,7 @@ const APP_SHELL = [
   'materiale-merch.html',
   'prodotto.html',
   'moduli.html',
+  'moduli-5x1000.html',
   'faq.html',
   'css/style.css',
   'js/app.js',
