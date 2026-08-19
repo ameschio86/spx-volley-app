@@ -34,7 +34,7 @@
     <img id="pdf-thumb" alt="Anteprima del documento">
   </div>
 
-  <a class="cta-btn" id="download-link" target="_blank" rel="noopener">SCARICA PDF</a>
+  <a class="cta-btn" id="download-link" download>SCARICA PDF</a>
 
   <div class="foot">Dubbi? <a href="mailto:spxvolley@gmail.com">spxvolley@gmail.com</a></div>
 </div>
@@ -48,7 +48,9 @@
   if (file) {
     document.getElementById('doc-headline').textContent = label;
     document.getElementById('pdf-thumb').src = 'assets/moduli/thumbs/' + file.replace('.pdf', '.png');
-    document.getElementById('download-link').href = 'assets/moduli/' + file;
+    const downloadLink = document.getElementById('download-link');
+    downloadLink.href = 'assets/moduli/' + file;
+    downloadLink.download = file;
   }
 </script>
 </body>
