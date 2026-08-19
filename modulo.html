@@ -23,18 +23,18 @@
 <div class="page">
   <div class="topbar">
     <a class="back" href="moduli.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="#FFC72C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    <div class="title" id="doc-eyebrow">MODULI</div>
+    <div class="title">MODULI</div>
   </div>
 
   <div class="headline" id="doc-headline">Documento</div>
-  <div class="sub">Il download è partito da solo — se non lo vedi, usa il bottone qui sotto</div>
+  <div class="sub">Anteprima della prima pagina</div>
   <div class="divider"></div>
 
-  <div class="pdf-frame">
-    <iframe id="pdf-frame" title="Anteprima documento PDF"></iframe>
+  <div class="pdf-preview">
+    <img id="pdf-thumb" alt="Anteprima del documento">
   </div>
 
-  <a class="cta-btn ghost" id="download-link" download>SCARICA IL PDF</a>
+  <a class="cta-btn" id="download-link" target="_blank" rel="noopener">SCARICA PDF</a>
 
   <div class="foot">Dubbi? <a href="mailto:spxvolley@gmail.com">spxvolley@gmail.com</a></div>
 </div>
@@ -46,23 +46,9 @@
   const label = params.get('label') || 'Documento';
 
   if (file) {
-    const src = 'assets/moduli/' + file;
-
-    document.getElementById('doc-eyebrow').textContent = 'MODULI';
     document.getElementById('doc-headline').textContent = label;
-    document.getElementById('pdf-frame').src = src;
-
-    const downloadLink = document.getElementById('download-link');
-    downloadLink.href = src;
-    downloadLink.download = file;
-
-    // avvia il download in automatico all'apertura della pagina
-    const auto = document.createElement('a');
-    auto.href = src;
-    auto.download = file;
-    document.body.appendChild(auto);
-    auto.click();
-    auto.remove();
+    document.getElementById('pdf-thumb').src = 'assets/moduli/thumbs/' + file.replace('.pdf', '.png');
+    document.getElementById('download-link').href = 'assets/moduli/' + file;
   }
 </script>
 </body>
