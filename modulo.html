@@ -48,9 +48,40 @@
   if (file) {
     document.getElementById('doc-headline').textContent = label;
     document.getElementById('pdf-thumb').src = 'assets/moduli/thumbs/' + file.replace('.pdf', '.png');
+
+    const src = 'assets/moduli/' + file;
     const downloadLink = document.getElementById('download-link');
-    downloadLink.href = 'assets/moduli/' + file;
+    downloadLink.href = src;
     downloadLink.download = file;
+
+    // Scarica il PDF come blob e lo salva da un blob-URL invece di navigare
+    // al file direttamente: su Safari/iOS un link diretto al PDF apre sempre
+    // l'anteprima a schermo intero, anche con l'attributo download. Passare
+    // da un blob forza il download reale sul dispositivo.
+    downloadLink.addEventListener('click', (event) => {
+      event.preventDefault();
+      const originalLabel = downloadLink.textContent;
+      downloadLink.textContent = 'PREPARO IL FILE…';
+
+      fetch(src)
+        .then((response) => response.blob())
+        .then((blob) => {
+          const blobUrl = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = blobUrl;
+          a.download = file;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          setTimeout(() => URL.revokeObjectURL(blobUrl), 2000);
+          downloadLink.textContent = originalLabel;
+        })
+        .catch(() => {
+          // fallback: se il fetch fallisce (es. offline), naviga al file
+          downloadLink.textContent = originalLabel;
+          window.location.href = src;
+        });
+    });
   }
 </script>
 </body>
