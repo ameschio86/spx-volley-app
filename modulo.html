@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modulo — SPX Volley</title>
+<meta name="description" content="Visualizza e scarica un modulo SPX Volley.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<svg class="geo-lines" viewBox="0 0 160 160" fill="none">
+  <circle cx="170" cy="-10" r="60" stroke="#FFC72C" stroke-width="1"/>
+  <line x1="90" y1="0" x2="160" y2="70" stroke="#FFC72C" stroke-width="1"/>
+  <line x1="120" y1="0" x2="160" y2="40" stroke="#FFC72C" stroke-width="1"/>
+</svg>
+
+<div class="page">
+  <div class="topbar">
+    <a class="back" href="moduli.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="#FFC72C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <div class="title" id="doc-eyebrow">MODULI</div>
+  </div>
+
+  <div class="headline" id="doc-headline">Documento</div>
+  <div class="sub">Il download è partito da solo — se non lo vedi, usa il bottone qui sotto</div>
+  <div class="divider"></div>
+
+  <div class="pdf-frame">
+    <iframe id="pdf-frame" title="Anteprima documento PDF"></iframe>
+  </div>
+
+  <a class="cta-btn ghost" id="download-link" download>SCARICA IL PDF</a>
+
+  <div class="foot">Dubbi? <a href="mailto:spxvolley@gmail.com">spxvolley@gmail.com</a></div>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+  const params = new URLSearchParams(location.search);
+  const file = params.get('file');
+  const label = params.get('label') || 'Documento';
+
+  if (file) {
+    const src = 'assets/moduli/' + file;
+
+    document.getElementById('doc-eyebrow').textContent = 'MODULI';
+    document.getElementById('doc-headline').textContent = label;
+    document.getElementById('pdf-frame').src = src;
+
+    const downloadLink = document.getElementById('download-link');
+    downloadLink.href = src;
+    downloadLink.download = file;
+
+    // avvia il download in automatico all'apertura della pagina
+    const auto = document.createElement('a');
+    auto.href = src;
+    auto.download = file;
+    document.body.appendChild(auto);
+    auto.click();
+    auto.remove();
+  }
+</script>
+</body>
+</html>
