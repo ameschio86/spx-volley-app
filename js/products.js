@@ -11,7 +11,7 @@ const PRODUCTS = {
     image: 'assets/merch/large/tshirt-allenamento-gialla.jpg',
     sizeTables: [
       { title: 'Taglie Adulto', colA: 'Altezza', colB: 'Larghezza', rows: [['XS',68,45],['S',70,48],['M',72,51],['L',74,54],['XL',76,57],['XXL',78,60]] },
-      { title: 'Taglie Bimbo', colA: 'Altezza', colB: 'Larghezza', rows: [['1/2','–','–'],['3/4',43,33],['5/6',46,36],['7/8',51,39],['9/11',56,42],['12/14',63,45]] },
+      { title: 'Taglie Bimbo', colA: 'Altezza', colB: 'Larghezza', rows: [['9/11',56,42],['12/14',63,45]] },
     ],
   },
   'tshirt-prepartita-nera': {
@@ -25,7 +25,7 @@ const PRODUCTS = {
     image: 'assets/merch/large/tshirt-prepartita-nera.jpg',
     sizeTables: [
       { title: 'Taglie Adulto', colA: 'Altezza', colB: 'Larghezza', rows: [['XS',68,45],['S',70,48],['M',72,51],['L',74,54],['XL',76,57],['XXL',78,60]] },
-      { title: 'Taglie Bimbo', colA: 'Altezza', colB: 'Larghezza', rows: [['1/2','–','–'],['3/4',43,33],['5/6',46,36],['7/8',51,39],['9/11',56,42],['12/14',63,45]] },
+      { title: 'Taglie Bimbo', colA: 'Altezza', colB: 'Larghezza', rows: [['9/11',56,42],['12/14',63,45]] },
     ],
   },
   'felpa-nera': {
@@ -39,7 +39,7 @@ const PRODUCTS = {
     image: 'assets/merch/large/felpa-nera.jpg',
     sizeTables: [
       { title: 'Taglie Adulto', colA: 'Altezza', colB: 'Larghezza', rows: [['XS',64,51],['S',66,54],['M',69,57],['L',71,60],['XL',74,63],['XXL',76,66]] },
-      { title: 'Taglie Bimbo', colA: 'Altezza', colB: 'Larghezza', rows: [['3/4',45,35],['5/6',49,37],['7/8',54,40],['9/10',57,42],['11/12',62,45],['13/14',67,48]] },
+      { title: 'Taglie Bimbo', colA: 'Altezza', colB: 'Larghezza', rows: [['9/10',57,42],['11/12',62,45],['13/14',67,48]] },
     ],
   },
   'polo-rappresentanza': {
